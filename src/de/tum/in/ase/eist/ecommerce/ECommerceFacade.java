@@ -7,9 +7,13 @@ public class ECommerceFacade {
      Order order;
      String address;
 
-    public ECommerceFacade(OrderController orderController, AdvertisementController advertisementController) {
+    public ECommerceFacade() {
+    }
+
+    public ECommerceFacade(OrderController orderController, AdvertisementController advertisementController, ShippingController shippingController) {
         this.orderController = orderController;
         this.advertisementController = advertisementController;
+        this.shippingController = shippingController;
     }
     public void shipOrder(Order order, String address) {
         this.order.setShipping(order.getShipping());
