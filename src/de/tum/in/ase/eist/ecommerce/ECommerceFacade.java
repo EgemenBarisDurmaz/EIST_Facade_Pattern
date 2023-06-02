@@ -1,5 +1,7 @@
 package de.tum.in.ase.eist.ecommerce;
 
+import java.util.ArrayList;
+
 public class ECommerceFacade {
      OrderController orderController;
      AdvertisementController advertisementController;
@@ -8,12 +10,19 @@ public class ECommerceFacade {
      String address;
 
     public ECommerceFacade() {
+        this.orderController = new OrderController();
+        this.advertisementController = new AdvertisementController();
+        this.shippingController = new ShippingController();
+        this.order = new Order(new ArrayList<>());
+        this.address = "";
     }
 
     public ECommerceFacade(OrderController orderController, AdvertisementController advertisementController, ShippingController shippingController) {
         this.orderController = orderController;
         this.advertisementController = advertisementController;
         this.shippingController = shippingController;
+        this.order = new Order(new ArrayList<>());
+        this.address = "";
     }
     public void shipOrder(Order order, String address) {
         this.order.setShipping(order.getShipping());
