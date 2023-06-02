@@ -3,11 +3,11 @@ package de.tum.in.ase.eist.ecommerce;
 import java.util.ArrayList;
 
 public class ECommerceFacade {
-     OrderController orderController;
-     AdvertisementController advertisementController;
-     ShippingController shippingController;
-     Order order;
-     String address;
+     private OrderController orderController;
+     private AdvertisementController advertisementController;
+     private ShippingController shippingController;
+     private Order order;
+     private String address;
 
     public ECommerceFacade() {
         this.orderController = new OrderController();
@@ -26,7 +26,8 @@ public class ECommerceFacade {
     }
     public void shipOrder(Order order, String address) {
         this.order.setShipping(order.getShipping());
-        this.shippingController.shipOrder(order);
+        this.shippingController.createShipping(address);
+        shippingController.shipOrder(order);
     }
 
     public void processOrder(Order order) {
