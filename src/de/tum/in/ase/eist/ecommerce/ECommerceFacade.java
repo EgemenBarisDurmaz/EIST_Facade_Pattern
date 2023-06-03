@@ -7,14 +7,14 @@ public class ECommerceFacade {
      private AdvertisementController advertisementController;
      private ShippingController shippingController;
      private Order order;
-     private String address;
+     //private String address;
 
     public ECommerceFacade() {
         this.orderController = new OrderController();
         this.advertisementController = new AdvertisementController();
         this.shippingController = new ShippingController();
         this.order = new Order(new ArrayList<>());
-        this.address = "";
+        //this.address = "";
     }
 
     public ECommerceFacade(OrderController orderController, AdvertisementController advertisementController, ShippingController shippingController) {
@@ -22,7 +22,7 @@ public class ECommerceFacade {
         this.advertisementController = advertisementController;
         this.shippingController = shippingController;
         this.order = new Order(new ArrayList<>());
-        this.address = "";
+       // this.address = "";
     }
     public void shipOrder(Order order, String address) {
         this.order.setShipping(order.getShipping());
