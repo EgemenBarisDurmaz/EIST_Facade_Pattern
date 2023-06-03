@@ -6,14 +6,14 @@ public class ECommerceFacade {
      private OrderController orderController;
      private AdvertisementController advertisementController;
      private ShippingController shippingController;
-     private Order order;
+     //private Order order;
      //private String address;
 
     public ECommerceFacade() {
         this.orderController = new OrderController();
         this.advertisementController = new AdvertisementController();
         this.shippingController = new ShippingController();
-        this.order = new Order(new ArrayList<>());
+       // this.order = new Order(new ArrayList<>());
         //this.address = "";
     }
 
@@ -21,12 +21,11 @@ public class ECommerceFacade {
         this.orderController = orderController;
         this.advertisementController = advertisementController;
         this.shippingController = shippingController;
-        this.order = new Order(new ArrayList<>());
+       // this.order = new Order(new ArrayList<>());
        // this.address = "";
     }
     public void shipOrder(Order order, String address) {
         Shipping shipping = this.shippingController.createShipping(address);
-        this.order = order;
         order.setShipping(shipping);
         shippingController.shipOrder(order);
     }
