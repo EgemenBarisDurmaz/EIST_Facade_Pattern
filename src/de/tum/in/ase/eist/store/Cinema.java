@@ -51,5 +51,4 @@ public class Cinema {
 		count *= 2;
 		return count;
 	}
-
 }

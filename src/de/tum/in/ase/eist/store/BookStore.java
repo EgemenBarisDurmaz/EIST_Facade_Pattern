@@ -2,8 +2,6 @@ package de.tum.in.ase.eist.store;
 
 import de.tum.in.ase.eist.ecommerce.ECommerceFacade;
 import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
 
 // TODO 5 Remove all associations to the different controllers and use the facade instead.
 public class BookStore {
@@ -14,15 +12,11 @@ public class BookStore {
 	private final int id;
 	private final ECommerceFacade eCommerceFacade;
 
-
-
-
 	public BookStore(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateBookStoreId();
 		this.eCommerceFacade = new ECommerceFacade();
-
 	}
 
 	public void acceptOrder(String shippingAddress, String phoneNumber) {
@@ -49,5 +43,4 @@ public class BookStore {
 		count += 2;
 		return count;
 	}
-
 }
