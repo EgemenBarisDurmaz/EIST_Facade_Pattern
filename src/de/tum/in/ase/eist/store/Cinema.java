@@ -1,9 +1,6 @@
 package de.tum.in.ase.eist.store;
 
-import de.tum.in.ase.eist.ecommerce.AdvertisementController;
-import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
+import de.tum.in.ase.eist.ecommerce.*;
 
 // TODO 6 Remove all associations to the different controllers and use the facade instead.
 public class Cinema {
@@ -12,41 +9,38 @@ public class Cinema {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final OrderController orderController;
-	private final ShippingController shippingController;
-	private final AdvertisementController advertisementController;
+	private final ECommerceFacade eCommerceFacade;
+
 
 	public Cinema(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
-		this.orderController = new OrderController();
-		this.shippingController = new ShippingController();
-		this.advertisementController = new AdvertisementController();
+		this.eCommerceFacade = new ECommerceFacade();
+
 	}
 
 	public void startLiveStream(int ageRestriction) {
 		System.out.println("Let's watch some ads at the beginning.");
-		advertise(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 		System.out.println("The film starts. Your cinema " + name + " hopes you enjoy the movie.");
 	}
 
 	public void stopLiveStream(int ageRestriction) {
 		System.out.println("Let's watch some more ads. ");
-		advertise(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 		System.out.println("Have a nice evening!");
 		System.out.println("-----------------------------------------------------------------------------------------");
 	}
 
 	public void advertise(int ageRestriction) {
-		advertisementController.playAdvertisement(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 	}
 
 	public void deliverPopcorn(String shippingAddress) {
-		Order order = orderController.retrieveLatestOrder(id);
-		orderController.processOrder(order);
-		order.setShipping(shippingController.createShipping(shippingAddress));
-		shippingController.shipOrder(order);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order);
+		eCommerceFacade.shipOrder(order, shippingAddress);
 	}
 
 	@Override
