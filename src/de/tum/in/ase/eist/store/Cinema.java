@@ -17,7 +17,6 @@ public class Cinema {
 		this.name = name;
 		this.id = generateCinemaId();
 		this.eCommerceFacade = new ECommerceFacade();
-
 	}
 
 	public void startLiveStream(int ageRestriction) {
